@@ -1,0 +1,24 @@
+HGhub iOS 云构建 · 仓库部署密钥（Deploy Key）
+================================================
+
+公钥（复制到 GitHub 仓库 → Settings → Deploy keys → Add deploy key）
+
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH76CuHOsN761fz++1taYH42i4ReMg5hUZtBAT3EJCFu hghub-ios-deploy
+
+指纹：SHA256:F6WwSyrG2AYMPcVcUH44lAIBJ2yN5viDHOtsRyk//Oc
+
+填写步骤
+--------
+1. 在 GitHub 新建（或使用已有）空仓库，拿到 SSH 地址，形如：
+   git@github.com:<你的账号>/<仓库名>.git
+2. 仓库 → Settings → Deploy keys → Add deploy key
+   - Title: hghub-ios-deploy
+   - Key: 粘贴上面那一整行公钥
+   - Allow write access: 勾选（推送代码必须）
+3. 把仓库 SSH 地址发给助手，即可推送并在 Actions 里构建 IPA。
+
+说明
+----
+私钥保存在本机 C:\Users\Administrator\.ssh\hghub_deploy_ed25519，不入库、不外发。
+Deploy key 只对单个仓库生效，勾选写权限后本机能向该仓库推送代码。
+GitHub Actions 在云端 macos-15 上编译，产物 IPA 在 Actions 运行页的 Artifacts 下载。
