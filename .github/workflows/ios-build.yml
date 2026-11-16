@@ -1,6 +1,14 @@
 name: Build HGhub iOS IPA
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/ios-build.yml"
+      - "src-tauri/**"
+      - "src/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
   workflow_dispatch:
     inputs:
       export_method:
